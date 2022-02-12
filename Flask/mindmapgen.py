@@ -3,6 +3,7 @@ import docx
 import PyPDF2
 import spacy
 import json
+import re
 '''import ssl
 
 try:
@@ -116,6 +117,8 @@ p = paras(text)
 prep = prenlp(text)
 summary = text_summarization(p)
 keywords = keyword_extraction2(summary)
+p = p.replace('.\n\n', '. ')
+p = p.replace('.\n', '. ')
 sentences = p.split('. ')
 for sent in sentences:
     for key in keywords[:len(keywords)//3]:
