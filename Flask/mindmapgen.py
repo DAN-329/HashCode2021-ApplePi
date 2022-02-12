@@ -2,7 +2,7 @@ import os
 import docx
 import PyPDF2
 import spacy
-import ssl
+'''import ssl
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -15,7 +15,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
-nltk.download('omw-1.4')
+nltk.download('omw-1.4')'''
 from nltk.corpus import stopwords
 from nltk import pos_tag
 from nltk.tokenize import word_tokenize, sent_tokenize
@@ -42,6 +42,13 @@ def extract(filepath):
         contents = myfile.read() 
         myfile.close()
         return contents
+
+def paras(text):
+    p = []
+    for para in text.split('\n\n'):
+        if para.count('.') > 2:
+            p.append(para)
+    return p
 
 def prenlp(string):
     stop_words = set(stopwords.words('english'))
@@ -99,8 +106,10 @@ def text_summarization(text):
             summary += " " + sentence
     return summary
 
-text = extract("smash.docx")
+text = extract("mitochondria.txt")
+title = text.split('\n', 1)[0]
+plist = paras(text)
 prep = prenlp(text)
-summary = text_summarization(prep)
+summary = text_summarization(text)
 keywords = keyword_extraction2(summary)
-print(keywords)
+#print(keywords)
