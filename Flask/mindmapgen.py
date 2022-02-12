@@ -2,6 +2,7 @@ import os
 import docx
 import PyPDF2
 import spacy
+import json
 '''import ssl
 
 try:
@@ -15,7 +16,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
-nltk.download('omw-1.4')'''
+nltk.download  ('omw-1.4')'''
 from nltk.corpus import stopwords
 from nltk import pos_tag
 from nltk.tokenize import word_tokenize, sent_tokenize
@@ -48,7 +49,7 @@ def paras(text):
     for para in text.split('\n\n'):
         if para.count('.') > 2:
             p.append(para)
-    return p
+    return '\n\n'.join(p)
 
 def prenlp(string):
     stop_words = set(stopwords.words('english'))
@@ -108,8 +109,22 @@ def text_summarization(text):
 
 text = extract("mitochondria.txt")
 title = text.split('\n', 1)[0]
-plist = paras(text)
+ll = [{"id": 1, "label": "Interests"}]
+curr = 1
+d = {}
+p = paras(text)
 prep = prenlp(text)
-summary = text_summarization(text)
+summary = text_summarization(p)
 keywords = keyword_extraction2(summary)
-#print(keywords)
+sentences = p.split('. ')
+for sent in sentences:
+    for key in keywords[:len(keywords)//3]:
+        curr += 1
+        if key not in d:
+            d[key] = curr
+            ll.append({"id": curr, "label": key, "parent": 1})
+        if key in sent:
+            curr += 1
+            ll.append({"id": curr, "label": sent, "parent": d[key]})
+
+print(ll)
