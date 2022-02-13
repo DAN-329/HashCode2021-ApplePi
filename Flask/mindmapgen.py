@@ -66,12 +66,13 @@ def prenlp(string):
             text += ' '
     paras = text.split('\n')
     output = ""
-    for para in paras:
-        output += ' '.join(para.split()) + '\n'
+    filtered_sentence = ""
     stop_words = set(stopwords.words('english'))
-    word_tokens = word_tokenize(output)
     lemmatizer = WordNetLemmatizer()
-    filtered_sentence = ' '.join([lemmatizer.lemmatize(w.lower(), get_wordnet_pos((w))) for w in word_tokens if w.lower() not in stop_words])
+    for para in paras:
+        output = ' '.join(para.split())
+        word_tokens = word_tokenize(output)
+        filtered_sentence += ' '.join([lemmatizer.lemmatize(w.lower(), get_wordnet_pos((w))) for w in word_tokens if w.lower() not in stop_words]) + '\n'
     return filtered_sentence
 
 def get_wordnet_pos(word):
