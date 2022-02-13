@@ -45,7 +45,7 @@ def extract(filepath):
 def paras(text):
     p = []
     for line in text.split('\n'):
-        if line.count('. ') > 1:
+        if line.count('. ') > 0:
             p.append(line)
     return '\n'.join(p)
 
@@ -131,8 +131,11 @@ def nodes(title, d):
             id += 1
     return l
 
-doc = extract("smash.pdf")
-title = doc.split('\n')[0]
+doc = extract("imagecaptioning.docx")
+for line in doc.split('\n'):
+    if not line.isspace() and line != '':
+        title = line
+        break
 text = prenlp(paras(doc))
 keywords = spacy_extraction(text)
 phrases = keyphrase_extraction(text, keywords)
