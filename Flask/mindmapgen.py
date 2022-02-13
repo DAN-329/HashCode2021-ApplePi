@@ -72,7 +72,7 @@ def prenlp(string):
     for para in paras:
         output = ' '.join(para.split())
         word_tokens = word_tokenize(output)
-        filtered_sentence += ' '.join([lemmatizer.lemmatize(w.lower(), get_wordnet_pos((w))) for w in word_tokens if w.lower() not in stop_words]) + '\n'
+        filtered_sentence += ' '.join([lemmatizer.lemmatize(w.lower(), get_wordnet_pos((w))) for w in word_tokens if w.lower() not in stop_words and pos_tag([w])[0][1].upper() != 'PROPN']) + '\n'
     return filtered_sentence
 
 def get_wordnet_pos(word):
@@ -102,7 +102,7 @@ def rake_nltk_extraction(text):
 def rake_extraction(text):
     stop_dir = 'StopWords.txt'
     rake_object = RAKE.Rake(stop_dir)
-    keywords = Sort_Tuple(rake_object.run(text))[-10:]
+    keywords = Sort_Tuple(rake_object.run(text))[-3:]
     keyphrases = [x[0] for x in keywords]
     return keyphrases
 
