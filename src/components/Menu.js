@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink as Link } from 'react-router-dom';
-import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import styled from 'styled-components';
 import wordie from '../images/WordieIcon.png';
+
+
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 export const Nav = styled.nav`
@@ -30,7 +33,7 @@ export const NavLink = styled(Link)`
 
 
 export const NavMenu = styled.div`
-  padding-top:60px;
+  padding-top:110px;
   display: flex;
   align-items: center;
   // margin-right: -24px;
@@ -42,16 +45,19 @@ export const NavMenu = styled.div`
 function Menu(){
     return(
         <div>
-  
-            <div ClassName="Container">
-              {/* <Router> */}
+          
+            <div className="Container">
+
                 <Nav>
-                  
-                  <Link to='/'> 
+                    <a href="http://localhost:3000">
                     <img src={wordie} className="wordieMenu"></img>
-                  </Link>
-                  
-                  <NavLink to='/'>
+                    </a>
+                    {/* <Link to={"/"}>  */}
+                      {/* <img src={wordie} className="wordieMenu"></img> */}
+                    {/* </Link>  */}
+
+                   {/* <NavLink to={"/"}> */}
+                   <a href="http://localhost:3000" className="impLink">
                     
                     <div class="MenuFlex">
                       
@@ -61,19 +67,18 @@ function Menu(){
                       </div>
                     </div>
             
-                  </NavLink>
+                  {/* </NavLink> */}
+                  </a>
 
                     <NavMenu>
-                      <NavLink to="/MindMap" activeStyle className="Navlinks">
+                      <NavLink to="/MindMap" activestyle className="Navlinks">
                         Mind Map
                       </NavLink >
-                      {/* <NavLink to='/s' activeStyle className="Navlinks">
-                        History
-                      </NavLink > */}
+
                     </NavMenu>
               
-              </Nav>
-            {/* </Router> */}
+              </Nav> 
+
       </div>
         </div>
     );

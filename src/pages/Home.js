@@ -2,10 +2,7 @@ import React from "react";
 import Menu from "../components/Menu";
 import Bounce from 'react-reveal/Bounce';
 import Jump from 'react-reveal/Jump';
-
-
-
-
+import FileUploader from "../components/FileUploader";
 
 function Home(){
     return(
@@ -16,7 +13,6 @@ function Home(){
             <br></br>
             <br></br>
             <br></br>
-
             <Bounce left    >
                 <div className="HomeText">  
                     Hey there !!
@@ -27,8 +23,18 @@ function Home(){
                     <Jump> :) </Jump>
                 </div>
             </Bounce>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div className="HomeText">  
+                    Please upload your text file below:
+            </div>
+            <br></br>
+            <br></br>
 
-
+            <center>
+            <FileUploader></FileUploader>
+            </center>
         </div>
     );
 };

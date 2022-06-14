@@ -24,7 +24,7 @@ code {
 }
 
 .wordieMenu{
-  height: 150px;
+  height: 160px;
 }
 
 .Header{
@@ -54,6 +54,10 @@ code {
   font-weight: 700;
 }
 
+.impLink{
+  text-decoration: none;
+}
+
 .Navlinks:hover{
   color: #1aa3ff;
   padding-bottom: 10px;
@@ -63,22 +67,7 @@ code {
 /* Below stuff belongs to the Mind Map creation part  */
 /* ################################################ */
 /* ################################################ */
-  html {
-    box-sizing: border-box;
-  }
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
+ 
   foreignObject {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -121,3 +110,19 @@ code {
     border-color: rgb(3, 211, 207);
     background-color: rgb(190, 254, 253);
   }
+
+.MindMapViwerWindow{
+  height: 20px;
+}
+
+.MindMapText{
+  font-size: 30px;
+  text-align: center; 
+  color: #666666;
+  font-weight: 700;
+}
+
+.fileButton{
+  color: #1aa3ff;
+}
+

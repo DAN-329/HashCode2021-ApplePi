@@ -1,21 +1,18 @@
 import './App.css';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import Home from './pages/Home';
+import React, { createRef, useEffect } from 'react';
 import MindMap from './pages/MindMap';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
-      <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} /> 
           <Route path="/MindMap" element={<MindMap />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
     </div>
-  );
+  )
 }
-
-export default App;
